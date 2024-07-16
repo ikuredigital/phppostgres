@@ -1,6 +1,7 @@
 <?php
 // Database connection parameters
-$host = '192.168.10.142';
+//$host = '192.168.10.142';
+$host = 'localhost';
 $dbname = 'warehouse';
 $user = 'danwqub7';
 $password = 'MeYkguSUPNpx';
