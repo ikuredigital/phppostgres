@@ -1,10 +1,10 @@
 <?php
 
 echo "app runung";
-exit();
+//exit();
 // Database connection parameters
-//$host = '192.168.10.142';
-$host = 'localhost';
+$host = '192.168.10.142';
+//$host = 'localhost';
 $dbname = 'warehouse';
 $user = 'danwqub7';
 $password = 'MeYkguSUPNpx';
