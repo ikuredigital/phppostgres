@@ -11,8 +11,8 @@ if (!$conn) {
     die("Connection failed: " . pg_last_error());
 }
 
-// Query to get the number of products
-$query = "SELECT COUNT(*) AS product_count FROM testproducts";
+// Query to get the number of Patient
+$query = "SELECT COUNT(*) AS patient_count FROM patients";
 $result = pg_query($conn, $query);
 if (!$result) {
     die("Error in SQL query: " . pg_last_error());
@@ -20,13 +20,13 @@ if (!$result) {
 
 // Fetch the result
 $row = pg_fetch_assoc($result);
-$product_count = $row['product_count'];
+$patient_count = $row['patient_count'];
 
 // Free resultset
 pg_free_result($result);
 
-// Query to get the list of products
-$list_query = "SELECT testproduct_id, product_name, category_id FROM testproducts"; // Adjust the columns as necessary
+// Query to get the list of Patient
+$list_query = "SELECT name, uhid, facilityCode FROM patients"; // Adjust the columns as necessary
 $list_result = pg_query($conn, $list_query);
 if (!$list_result) {
     die("Error in SQL query: " . pg_last_error());
@@ -40,7 +40,7 @@ pg_close($conn);
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Products List and Count</title>
+    <title>Patient List and Count</title>
     <style>
         table {
             width: 50%;
@@ -58,28 +58,28 @@ pg_close($conn);
     </style>
 </head>
 <body>
-    <h2 style="text-align: center;">Products Count</h2>
+    <h2 style="text-align: center;">Patient Count</h2>
     <table>
         <tr>
-            <th>Number of products</th>
+            <th>Number of Patient</th>
         </tr>
         <tr>
-            <td><?php echo $product_count; ?></td>
+            <td><?php echo $patient_count; ?></td>
         </tr>
     </table>
 
-    <h2 style="text-align: center;">Products List</h2>
+    <h2 style="text-align: center;">Patient List</h2>
     <table>
         <tr>
-            <th>ID</th>
-            <th>Product Name</th>
-            <th>Category ID</th>
+            <th>NAME</th>
+            <th>UHID</th>
+            <th>Facility Code</th>
         </tr>
-        <?php while ($row = pg_fetch_assoc($list_result)): ?>
+        <?php while ($row = pg_fetch_assoc($list_result)): ?> 
         <tr>
-            <td><?php echo htmlspecialchars($row['testproduct_id']); ?></td>
-            <td><?php echo htmlspecialchars($row['product_name']); ?></td>
-            <td><?php echo htmlspecialchars($row['category_id']); ?></td>
+            <td><?php echo htmlspecialchars($row['name']); ?></td>
+            <td><?php echo htmlspecialchars($row['uhid']); ?></td>
+            <td><?php echo htmlspecialchars($row['facilityCode']); ?></td>
         </tr>
         <?php endwhile; ?>
     </table>
