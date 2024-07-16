@@ -1,4 +1,7 @@
 <?php
+
+echo "app runung";
+exit();
 // Database connection parameters
 //$host = '192.168.10.142';
 $host = 'localhost';
