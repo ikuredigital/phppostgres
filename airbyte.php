@@ -1,10 +1,9 @@
 <?php
 
-echo "app runung";
+//echo "app runung";
 //exit();
 // Database connection parameters
 $host = '192.168.10.142';
-//$host = 'localhost';
 $dbname = 'warehouse';
 $user = 'danwqub7';
 $password = 'MeYkguSUPNpx';
@@ -30,7 +29,7 @@ $patient_count = $row['patient_count'];
 pg_free_result($result);
 
 // Query to get the list of Patient
-$list_query = "SELECT name, uhid, facilityCode FROM patients"; // Adjust the columns as necessary
+$list_query = "SELECT name, uhid, uhid FROM patients"; // Adjust the columns as necessary
 $list_result = pg_query($conn, $list_query);
 if (!$list_result) {
     die("Error in SQL query: " . pg_last_error());
@@ -83,7 +82,7 @@ pg_close($conn);
         <tr>
             <td><?php echo htmlspecialchars($row['name']); ?></td>
             <td><?php echo htmlspecialchars($row['uhid']); ?></td>
-            <td><?php echo htmlspecialchars($row['facilityCode']); ?></td>
+            <td><?php echo htmlspecialchars($row['uhid']); ?></td>
         </tr>
         <?php endwhile; ?>
     </table>
