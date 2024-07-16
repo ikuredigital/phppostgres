@@ -1,3 +1,3 @@
-<?
+<?php
 echo "App Running";
 ?>
