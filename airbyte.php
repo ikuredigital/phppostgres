@@ -29,7 +29,7 @@ $patient_count = $row['patient_count'];
 pg_free_result($result);
 
 // Query to get the list of Patient
-$list_query = "SELECT name, uhid, addedByChwName FROM patients limit 10"; // Adjust the columns as necessary
+$list_query = "SELECT name, uhid, patients.addedByChwName FROM patients limit 10"; // Adjust the columns as necessary
 $list_result = pg_query($conn, $list_query);
 if (!$list_result) {
     die("Error in SQL query: " . pg_last_error());
