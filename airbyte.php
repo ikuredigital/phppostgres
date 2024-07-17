@@ -59,6 +59,30 @@ $total_vitals_count = $row['total_vitals_count'];
 // Free vitals_result
 pg_free_result($vitals_result);
 
+// Query to get the number of apthology
+$total_pathology_query = "SELECT SUM(count) AS total_pathology_count
+FROM (
+  SELECT COUNT(*) AS count FROM ikure_chw_vitals_be_ecgs
+  UNION ALL
+  SELECT COUNT(*) AS count FROM ikure_chw_vitals_be_bloodglucoses
+  UNION ALL
+  SELECT COUNT(*) AS count FROM ikure_chw_vitals_be_hemoglobins
+ 
+) AS subquery";
+
+
+$pathology_result = pg_query($conn, $total_vitals_query);
+if (!$pathology_result) {
+    die("Error in SQL query: " . pg_last_error());
+}
+
+// Fetch the vitals_result
+$row = pg_fetch_assoc($pathology_result);
+$total_pathology_count = $row['total_pathology_count'];
+
+// Free pathology_result
+pg_free_result($pathology_result);
+
 
 
 // Query to get the list of Patient
@@ -105,7 +129,7 @@ pg_close($conn);
         <tr>
             <td><?php echo $patient_count; ?></td>
             <td><?php echo $total_vitals_count; ?></td>
-            <td><?php echo $patient_count; ?></td>
+            <td><?php echo $total_pathology_count; ?></td>
         </tr>
     </table>
 
