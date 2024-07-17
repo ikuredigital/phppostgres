@@ -13,9 +13,9 @@
             color: #2c3e50;
         }
         .count-table {
-            width: 80%;
+            width: 50%;
             border-collapse: collapse;
-            margin-bottom: 20px;
+            margin: 50px auto;
         }
         .count-table th, .count-table td {
             border: 1px solid #ddd;
@@ -23,7 +23,7 @@
         }
         .count-table th {
             background-color: #f2f2f2;
-            text-align: left;
+            text-align: center;
         }
         .count-table td {
             text-align: left;
