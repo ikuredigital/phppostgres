@@ -56,7 +56,7 @@
         }
 
         // Fetch and display counts for vitals tables
-        echo "<h2><a href="./home.php">Back</a></h2>";
+        echo "<h2><a href=\"./home.php\">Back</a></h2>";
         echo "<table class='count-table'>";
         echo "<tr><th>Vitals Name</th><th>Count</th></tr>";
         foreach ($vitalsTables as $table) {
