@@ -13,7 +13,7 @@
             color: #2c3e50;
         }
         .count-table {
-            width: 100%;
+            width: 80%;
             border-collapse: collapse;
             margin-bottom: 20px;
         }
@@ -26,7 +26,7 @@
             text-align: left;
         }
         .count-table td {
-            text-align: right;
+            text-align: left;
         }
     </style>
 </head>
@@ -58,7 +58,7 @@
         // Fetch and display counts for vitals tables
         echo "<h2>Vitals</h2>";
         echo "<table class='count-table'>";
-        echo "<tr><th>Table Name</th><th>Count</th></tr>";
+        echo "<tr><th>Vitals Name</th><th>Count</th></tr>";
         foreach ($vitalsTables as $table) {
             $count = getCount($pdo, $table);
             echo "<tr><td>$table</td><td>$count</td></tr>";
@@ -68,7 +68,7 @@
         // Fetch and display counts for pathology tables
         echo "<h2>Pathology</h2>";
         echo "<table class='count-table'>";
-        echo "<tr><th>Table Name</th><th>Count</th></tr>";
+        echo "<tr><th>Pathology Name</th><th>Count</th></tr>";
         foreach ($pathologyTables as $table) {
             $count = getCount($pdo, $table);
             echo "<tr><td>$table</td><td>$count</td></tr>";
