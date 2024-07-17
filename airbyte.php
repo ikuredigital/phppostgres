@@ -15,7 +15,7 @@ if (!$conn) {
 }
 
 // Query to get the number of Patient
-$query = "SELECT COUNT(*) AS patient_count FROM patients";
+$query = "SELECT COUNT(*) AS patient_count FROM ikure_chw_patient_be_patients";
 $result = pg_query($conn, $query);
 if (!$result) {
     die("Error in SQL query: " . pg_last_error());
