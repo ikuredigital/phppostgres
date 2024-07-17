@@ -122,8 +122,8 @@ pg_close($conn);
     <table>
         <tr>
             <th>Patient</th>       
-            <th>Vitals</th>
-            <th>Pathology</th>
+            <th><a href="../vitals_pathology_count.php">Vitals</a></th>
+            <th><a href="./vitals_pathology_count.php">Pathology</a></th>
         
         </tr>
         <tr>
