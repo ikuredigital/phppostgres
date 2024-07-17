@@ -28,6 +28,39 @@ $patient_count = $row['patient_count'];
 // Free resultset
 pg_free_result($result);
 
+// Query to get the number of vitals
+$total_vitals_query = "SELECT SUM(count) AS total_vitals_count
+FROM (
+  SELECT COUNT(*) AS count FROM ikure_chw_vitals_be_heights
+  UNION ALL
+  SELECT COUNT(*) AS count FROM ikure_chw_vitals_be_bloodpressures
+  UNION ALL
+  SELECT COUNT(*) AS count FROM ikure_chw_vitals_be_weights
+ UNION ALL
+  SELECT COUNT(*) AS count FROM ikure_chw_vitals_be_pulses
+     UNION ALL
+  SELECT COUNT(*) AS count FROM ikure_chw_vitals_be_temperatures
+  UNION ALL
+  SELECT COUNT(*) AS count FROM ikure_chw_vitals_be_respiratories
+  UNION ALL
+  SELECT COUNT(*) AS count FROM ikure_chw_vitals_be_oxygensaturations
+) AS subquery";
+
+
+$vitals_result = pg_query($conn, $total_vitals_query);
+if (!$vitals_result) {
+    die("Error in SQL query: " . pg_last_error());
+}
+
+// Fetch the vitals_result
+$row = pg_fetch_assoc($vitals_result);
+$total_vitals_count = $row['total_vitals_count'];
+
+// Free vitals_result
+pg_free_result($vitals_result);
+
+
+
 // Query to get the list of Patient
 $list_query = "SELECT name, uhid, addresses FROM ikure_chw_patient_be_patients limit 5"; // Adjust the columns as necessary
 $list_result = pg_query($conn, $list_query);
@@ -61,12 +94,17 @@ pg_close($conn);
     </style>
 </head>
 <body>
-    <h2 style="text-align: center;">Patient Count</h2>
+    <h2 style="text-align: center;">Key Metrics</h2>
     <table>
         <tr>
-            <th>Number of Patient</th>
+            <th>Patient</th>       
+            <th>Vitals</th>
+            <th>Pathology</th>
+        
         </tr>
         <tr>
+            <td><?php echo $patient_count; ?></td>
+            <td><?php echo $total_vitals_count; ?></td>
             <td><?php echo $patient_count; ?></td>
         </tr>
     </table>
