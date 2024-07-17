@@ -59,7 +59,7 @@ $total_vitals_count = $row['total_vitals_count'];
 // Free vitals_result
 pg_free_result($vitals_result);
 
-// Query to get the number of apthology
+// Query to get the number of pathology
 $total_pathology_query = "SELECT SUM(count) AS total_pathology_count
 FROM (
   SELECT COUNT(*) AS count FROM ikure_chw_vitals_be_ecgs
@@ -71,12 +71,12 @@ FROM (
 ) AS subquery";
 
 
-$pathology_result = pg_query($conn, $total_vitals_query);
+$pathology_result = pg_query($conn, $total_pathology_query);
 if (!$pathology_result) {
     die("Error in SQL query: " . pg_last_error());
 }
 
-// Fetch the vitals_result
+// Fetch the pathology_result
 $row = pg_fetch_assoc($pathology_result);
 $total_pathology_count = $row['total_pathology_count'];
 
