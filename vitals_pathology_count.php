@@ -31,7 +31,7 @@
     </style>
 </head>
 <body>
-    <h1>Vitals and Pathology Counts</h1>
+    <h1 style="text-align: center;">Vitals and Pathology Counts</h1>
     <?php
     // Database connection parameters
     $host = '192.168.10.142';
@@ -56,7 +56,7 @@
         }
 
         // Fetch and display counts for vitals tables
-        echo "<h2>Vitals</h2>";
+        echo "<h2 style=text-align: center;>Vitals</h2>";
         echo "<table class='count-table'>";
         echo "<tr><th>Vitals Name</th><th>Count</th></tr>";
         foreach ($vitalsTables as $table) {
@@ -66,7 +66,7 @@
         echo "</table>";
 
         // Fetch and display counts for pathology tables
-        echo "<h2>Pathology</h2>";
+        echo "<h2 style=text-align: center;>Pathology</h2>";
         echo "<table class='count-table'>";
         echo "<tr><th>Pathology Name</th><th>Count</th></tr>";
         foreach ($pathologyTables as $table) {
