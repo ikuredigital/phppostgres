@@ -133,7 +133,7 @@ pg_close($conn);
         </tr>
     </table>
 
-    <h2 style="text-align: center;">Patient List (5 Record)</h2>
+    <h2 style="text-align: center;">Patient List (5 Records)</h2>
     <table>
         <tr>
             <th>NAME</th>
